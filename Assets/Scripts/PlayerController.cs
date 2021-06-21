@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public Transform playerRightHand;
     private GameObject weapon = new GameObject();
 
+    private AudioSource runAudio;
+
     private void Awake()
     {
         walkState = Animator.StringToHash("isWalking");
@@ -35,6 +37,8 @@ public class PlayerController : MonoBehaviour
         weapon.transform.parent = playerRightHand;
         weapon.transform.localPosition = new Vector3(0.01f, 0.16f, 0);
         weapon.transform.rotation = Quaternion.Euler(0, 0, 40);
+
+        runAudio = GetComponent<AudioSource>();
 
     }
 
@@ -61,21 +65,37 @@ public class PlayerController : MonoBehaviour
             {
                 transform.LookAt(lookPosition + transform.position);
                 transform.position += Vector3.forward * runSpeed * Time.deltaTime;
+                if(!runAudio.isPlaying)
+                {
+                    runAudio.Play();
+                }
             }
             else if (Input.GetKey(KeyCode.S))
             {
                 transform.LookAt(lookPosition + transform.position);
                 transform.position += Vector3.back * runSpeed * Time.deltaTime;
+                if (!runAudio.isPlaying)
+                {
+                    runAudio.Play();
+                }
             }
             else if (Input.GetKey(KeyCode.A))
             {
                 transform.LookAt(lookPosition + transform.position);
                 transform.position += Vector3.left * runSpeed * Time.deltaTime;
+                if (!runAudio.isPlaying)
+                {
+                    runAudio.Play();
+                }
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 transform.LookAt(lookPosition + transform.position);
                 transform.position += Vector3.right * runSpeed * Time.deltaTime;
+                if (!runAudio.isPlaying)
+                {
+                    runAudio.Play();
+                }
             }
         }
         else
