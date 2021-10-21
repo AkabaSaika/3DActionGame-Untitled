@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float runSpeed = 5.0f;
     public float walkSpeed = 2.0f;
+    public float hp = 100.0f;
     private float h;
     private float v;
     //private GameObject go;
@@ -15,11 +16,13 @@ public class PlayerController : MonoBehaviour
     private int runState;
     private int attackState;
 
-    public List<GameObject> weaponsList = new List<GameObject>();
+    public List<GameObject> weaponsList;
     public Transform playerRightHand;
     private GameObject weapon = new GameObject();
 
     private AudioSource runAudio;
+
+    private Collider weaponCollider;
 
     private void Awake()
     {
@@ -33,10 +36,13 @@ public class PlayerController : MonoBehaviour
         //go = GetComponent<GameObject>();
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        
         weapon = Instantiate(weaponsList[0]);
         weapon.transform.parent = playerRightHand;
         weapon.transform.localPosition = new Vector3(0.01f, 0.16f, 0);
         weapon.transform.rotation = Quaternion.Euler(0, 0, 40);
+        weaponCollider = weapon.GetComponent<CapsuleCollider>();
+        weaponCollider.enabled = false;
 
         runAudio = GetComponent<AudioSource>();
 
@@ -164,5 +170,14 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+    }
+    void DisableWeaponCollider()
+    {
+        weaponCollider.enabled = false;
+    }
+
+    void EnableWeaponCollider()
+    {
+        weaponCollider.enabled = true;
     }
 }
