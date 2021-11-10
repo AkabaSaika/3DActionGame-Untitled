@@ -31,7 +31,7 @@ public class WeaponController : MonoBehaviour
         switch(collision.tag)
         {
             case "Enemy":
-                collision.SendMessage("TakeDamage");
+                collision.SendMessage("TakeDamage",25f);
                 break;
         }
     }

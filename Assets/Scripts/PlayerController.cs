@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 transform.LookAt(lookPosition + transform.position);
-                transform.position += Vector3.forward * runSpeed * Time.deltaTime;
+                transform.position += transform.forward * runSpeed * Time.deltaTime;
                 if(!runAudio.isPlaying)
                 {
                     runAudio.Play();
@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetKey(KeyCode.S))
             {
                 transform.LookAt(lookPosition + transform.position);
-                transform.position += Vector3.back * runSpeed * Time.deltaTime;
+                transform.position += (-1) * transform.forward * runSpeed * Time.deltaTime;
                 if (!runAudio.isPlaying)
                 {
                     runAudio.Play();
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetKey(KeyCode.A))
             {
                 transform.LookAt(lookPosition + transform.position);
-                transform.position += Vector3.left * runSpeed * Time.deltaTime;
+                transform.position += (-1)* transform.right * runSpeed * Time.deltaTime;
                 if (!runAudio.isPlaying)
                 {
                     runAudio.Play();
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetKey(KeyCode.D))
             {
                 transform.LookAt(lookPosition + transform.position);
-                transform.position += Vector3.right * runSpeed * Time.deltaTime;
+                transform.position += transform.right * runSpeed * Time.deltaTime;
                 if (!runAudio.isPlaying)
                 {
                     runAudio.Play();
@@ -109,12 +109,12 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 transform.LookAt(lookPosition + transform.position);
-                transform.position += Vector3.forward * walkSpeed * Time.deltaTime;
+                transform.position += transform.forward * walkSpeed * Time.deltaTime;
             }
             else if (Input.GetKey(KeyCode.S))
             {
                 transform.LookAt(lookPosition + transform.position);
-                transform.position += Vector3.back * walkSpeed * Time.deltaTime;
+                transform.position += (-1) * transform.forward * walkSpeed * Time.deltaTime;
             }
             else if (Input.GetKey(KeyCode.A))
             {
